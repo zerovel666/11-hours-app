@@ -34,8 +34,23 @@
                             <!-- Описание товара -->
                             <div class="card-body">
                                 <p class="card-text">Цена: <strong>{{ product.sell_price }}</strong></p>
-                                <h5 class="card-title">{{ product.name }}</h5>
-                                <p class="card-text">{{ product.description }}</p>
+                                <h5 class="card-title">
+                                {% autoescape off %}
+                                    {% if product.headline %}
+                                    {{product.headline|truncatechars:35 }}
+                                    {% else %}
+                                    {{ product.name }}
+                                    {% endif %}
+                                {% endautoescape %}
+                                </h5>
+                                <p class="card-text">                    
+                                {% autoescape off %}
+                                    {% if product.headline %}
+                                    {{product.bodyline|truncatechars:100 }}
+                                    {% else %}
+                                    {{ product.description }}
+                                    {% endif %}
+                                {% endautoescape %}</p>
                                 <a href="#" class="btn btn-dark add-to-cart">Добавить в корзину</a>
                             </div>
                         </div>
