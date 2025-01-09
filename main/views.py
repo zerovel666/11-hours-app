@@ -3,14 +3,16 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
     context = {
-        'title' : 'Home',
-        'content' : 'Главаная страница магазина - HOME',
-        'list' : ['first','second'],
-        'dict' : {'first': 1},
-        'is_authenticated' : True,
+        'title' : 'Home - Главная',
+        'content' : 'Магазин мебели HOME'
     }
     return render(request,'main/index.html',context)
 
 def about(request):
-    return HttpResponse('About page')
+    context = {
+        'title' : 'Home - О нас',
+        'content' : 'О нас',
+        'text_on_page' : 'Текст о том почему этот магазин такой классный, и хороший товар.'
+    }
+    return render(request,'main/about.html',context)
 
