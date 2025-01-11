@@ -48,6 +48,7 @@ def profile(request):
         form = UserProfileForm(data=request.POST,instance=request.user,files=request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request,f"{User.username}, Вы успешно обновили профиль аккаунт")
             return HttpResponseRedirect(reverse('user:profile'))
     else:
         form = UserProfileForm(instance=request.user)
